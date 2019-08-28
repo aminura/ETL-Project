@@ -1,24 +1,24 @@
 -- Create tables for raw data to be loaded
-DROP TABLE avocado_db;
-CREATE TABLE avocado_db (
+DROP TABLE avocado;
+CREATE TABLE avocado (
 id SERIAL PRIMARY KEY,
 avocado_price TEXT,
-city TEXT
+city TEXT 
 );
-
-DROP TABLE housePrices_db;
-CREATE TABLE housePrices_db (
+​
+SELECT * FROM avocado
+​
+DROP TABLE houseprices;
+CREATE TABLE houseprices (
 house_id SERIAL PRIMARY KEY,
 metro_city TEXT,
-md_house_price TEXT,
+median_home_price TEXT
 );
-
+SELECT * FROM houseprices
+​
 -- Joins tables
-SELECT avocado_db.id, avocado_db.city, avocado_db.price, housePrices_db.md_house_price
-FROM customer_name
-JOIN customer_location
-ON avocado_db.city = housePrices_db.metro_city;
-
--- SELECT * FROM avocado_db
--- UNION
--- SELECT * FROM housePrices_db;
+SELECT avocado.city, avocado.avocado_price, houseprices.median_home_price
+FROM avocado
+JOIN houseprices
+ON avocado.city LIKE houseprices.metro_city
+ORDER BY houseprices.median_home_price;
