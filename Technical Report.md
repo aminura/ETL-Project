@@ -18,14 +18,14 @@ Data from Kiplinger was extracted using Web Scraping technique with Pandas and B
 Data was loaded and then cleaned up using Jupyter notebooks and Pandas, putting them into dataframes that exposed their common headers. It was then found that common points were shared in avocado prices and in the home prices data as both had city data as well as prices whereas the wheat price data did not include cities. We then decided to focus on only the two sources of data - Avocado Prices and Home Prices with their locations in order to find our results.
 
 Transformations for House Prices data:
-	* selected and renamed only desired attributes (columns): "Metro Area" and "Median Home Price"
-	* splited "Metro Area" data in 2 separated columns: "City" and "State" and kept only "City"
-	* cleanup data by removing with regex unwanted characters from some records
+* selected and renamed only desired attributes (columns): "Metro Area" and "Median Home Price"
+* splited "Metro Area" data in 2 separated columns: "City" and "State" and kept only "City"
+* cleanup data by removing with regex unwanted characters from some records
 
 Transformations for Avocado data:
-	* calculated the median price for avocado per region
-	* made a copy of data only with the attributes of interest: "AveragePrice" and "region"
-	* renamed the columns
+* calculated the median price for avocado per region
+* made a copy of data only with the attributes of interest: "AveragePrice" and "region"
+* renamed the columns
 
 ## (L)oading to Postgres:
 Since the data was already tubular we used PostgreSQL with pgAdmin to create (schema.sql), load the dataframes and aggregate the tables. The tables were joined on the cities with the final result being a table with city, avocado prices, and median home prices.
